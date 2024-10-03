@@ -1,3 +1,13 @@
+.card {
+  color: #fff;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 body {
   background-color: #1f1f2e;
   font-family: "Poppins", sans-serif;
@@ -10,7 +20,7 @@ body {
   align-items: center;
   background-color: #1f1f2e;
   border-radius: 8px;
-  margin: 1.5rem 1.5rem 1.5rem 3rem;
+  margin: 1.5rem 1.5rem 3rem 6rem;
 }
 .header .search-bar {
   display: flex;
@@ -18,21 +28,16 @@ body {
   align-items: center;
   width: 65vw;
 }
-.header .search-bar #matriculeInput {
+.header .search-bar input, .header .search-bar #matriculeInput {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
-  font-size: 16px;
-}
-.header .search-bar input {
   background-color: #27293d;
   border: none;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  width: 300px;
+  font-size: 16px;
   color: #fff;
 }
-.header .search-bar input:focus {
+.header .search-bar input:focus, .header .search-bar #matriculeInput:focus {
   outline: none;
   box-shadow: 0 0 5px #f97300;
 }
@@ -52,76 +57,94 @@ body {
 .header .name-bar {
   background-color: #1f1f2e;
   color: #f97300;
-  border-radius: 8px;
   font-size: 16px;
-  color: #ffffff;
   white-space: nowrap;
 }
 .header .name-bar .self-name {
   font-size: 1.25rem;
   font-weight: bold;
-  margin: 0;
   color: #f97300;
 }
 
-.person-info {
+.person-info-container {
   display: flex;
-  justify-content: space-around;
-  background-color: #1f1f2e;
-  padding: 1.5rem;
-  gap: 3rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
-.person-info .person-id {
-  text-align: center;
+
+.person-id-self-money-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.person-id-self-money-container .person-id {
   flex: 1;
   background-color: #27293d;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-}
-.person-info .person-id p {
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
   color: #6d6d80;
 }
-.person-info .person-id .self-grade {
+.person-id-self-money-container .person-id .self-grade {
   color: #f97300;
   font-size: 1.5rem;
   font-weight: bold;
 }
-.person-info .person-id .self-mat {
-  color: #fff;
+.person-id-self-money-container .person-id .self-mat {
   font-size: 1.25rem;
+  color: #fff;
 }
-.person-info .person-salary {
-  flex: auto;
-  text-align: center;
+.person-id-self-money-container .self-money {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  background-color: #1f1f2e;
+  width: auto;
+  height: auto;
+  gap: 3rem;
+}
+.person-id-self-money-container .self-money .self-salary, .person-id-self-money-container .self-money .self-remains-to-pay {
   background-color: #27293d;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-}
-.person-info .person-salary p {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  color: #6d6d80;
-}
-.person-info .person-salary .self-salary {
-  color: #f97300;
-  font-size: 1.2rem;
   font-weight: bold;
+  width: 200px;
+  height: 150px;
 }
-.person-info .person-salary .self-bills,
-.person-info .person-salary .self-amount-crafted,
-.person-info .person-salary .self-expense-report,
-.person-info .person-salary .self-total-ca,
-.person-info .person-salary .self-remains-to-pay {
-  color: #fff;
+.person-id-self-money-container .self-money .self-salary {
+  color: #f97300;
+}
+
+.person-salary {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+.person-salary .self-total-ca, .person-salary .self-bills, .person-salary .self-amount-crafted, .person-salary .self-expense-report {
+  flex: 1;
+  background-color: #27293d;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-weight: bold;
+  width: 200px;
+  height: 150px;
+}
+.person-salary .self-total-ca, .person-salary .self-bills {
+  color: #4be6fe;
+}
+.person-salary .self-amount-crafted {
+  color: #d16aff;
+}
+.person-salary .self-expense-report {
+  color: #ff6ba5;
 }
 
 .all-person-info {
   background-color: #27293d;
   padding: 1.5rem;
   border-radius: 8px;
-  margin-bottom: 1.5rem;
+  margin: 0 3rem 3rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .all-person-info .all-person-id {
@@ -132,8 +155,8 @@ body {
 }
 .all-person-info .all-person-id .all-mat {
   color: #4be6fe;
-  font-size: 1.2rem;
   font-weight: bold;
+  font-size: 1.2rem;
 }
 .all-person-info .all-person-id .all-name {
   color: #f97300;
@@ -151,22 +174,34 @@ body {
   color: #f97300;
   font-weight: bold;
 }
-.all-person-info .all-person-salary .all-bills,
-.all-person-info .all-person-salary .all-amount-crafted,
-.all-person-info .all-person-salary .all-expense-report,
-.all-person-info .all-person-salary .all-total-ca,
+.all-person-info .all-person-salary .all-total-ca {
+  color: #4be6fe;
+}
+.all-person-info .all-person-salary .all-bills {
+  color: #fff;
+}
+.all-person-info .all-person-salary .all-amount-crafted {
+  color: #d16aff;
+}
+.all-person-info .all-person-salary .all-expense-report {
+  color: #ff6ba5;
+}
 .all-person-info .all-person-salary .all-remains-to-pay {
   color: #fff;
 }
 
 @media (max-width: 768px) {
+  .person-id-self-money-container, .person-salary {
+    flex-direction: column;
+  }
+  .person-salary {
+    gap: 1rem;
+  }
   .person-info, .all-person-info {
     flex-direction: column;
-    text-align: left;
   }
-  .person-info .person-id, .person-info .person-salary, .person-info .all-person-id, .person-info .all-person-salary, .all-person-info .person-id, .all-person-info .person-salary, .all-person-info .all-person-id, .all-person-info .all-person-salary {
+  .person-info .all-person-id, .person-info .all-person-salary, .all-person-info .all-person-id, .all-person-info .all-person-salary {
     width: 100%;
-    text-align: left;
   }
   .search-bar {
     flex-direction: column;

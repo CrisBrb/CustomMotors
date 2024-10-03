@@ -1,52 +1,59 @@
 // Variables pour les couleurs basées sur le visuel de l'image
-$background-dark: #1f1f2e; // Fond principal sombre
-$background-light: #27293d; // Fond pour les cartes
-$primary-text-color: #fff; // Couleur du texte principal
-$secondary-text-color: #6d6d80; // Texte secondaire (gris)
-$accent-color-orange: #f97300; // Couleur d'accent (orange)
-$accent-color-blue: #4be6fe; // Couleur d'accent (bleu)
-$accent-color-purple: #d16aff; // Couleur d'accent (violet)
-$accent-color-pink: #ff6ba5; // Couleur d'accent (rose)
+$background-dark: #1f1f2e; 
+$background-light: #27293d;
+$primary-text-color: #fff; 
+$secondary-text-color: #6d6d80;
+$accent-color-orange: #f97300;
+$accent-color-blue: #4be6fe;
+$accent-color-purple: #d16aff;
+$accent-color-pink: #ff6ba5;
 $border-radius: 8px;
 $box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-// Style général du body et des éléments de base
+// Ajout d'une classe de carte pour les éléments
+.card {
+  // background-color: $background-light;
+  // border-radius: $border-radius; // Utilise $border-radius pour un carré
+  // box-shadow: $box-shadow;
+  color: $primary-text-color;
+  width: 150px; // Fixer une largeur pour une forme carrée
+  height: 150px; // Fixer une hauteur pour une forme carrée
+  display: flex;
+  flex-direction: column;
+  align-items: center; // Centrer le contenu horizontalement
+  justify-content: center; // Centrer le contenu verticalement
+
+}
+
+// Style général
 body {
   background-color: $background-dark;
   font-family: 'Poppins', sans-serif;
   color: $primary-text-color;
 }
 
-// Style du header et de la barre de recherche
+// Header et barre de recherche
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: $background-dark;
   border-radius: $border-radius;
-  margin: 1.5rem 1.5rem 1.5rem 3rem;
+  margin: 1.5rem 1.5rem 3rem 6rem;
 
   .search-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 65vw;  // 45% de la largeur de l'écran
+    width: 65vw;
 
-    #matriculeInput {
-        width: 100%;  // Faire en sorte que l'input prenne toute la place de la barre de recherche
-        padding: 10px;
-        border-radius: 5px;
-        // border: 1px solid #ccc;
-        font-size: 16px;
-        // margin: 1.5rem 1.5rem 1.5rem 3rem;
-    }
-
-    input {
+    input, #matriculeInput {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
       background-color: $background-light;
       border: none;
-      padding: 0.75rem 1rem;
-      border-radius: $border-radius;
-      width: 300px;
+      font-size: 16px;
       color: $primary-text-color;
       &:focus {
         outline: none;
@@ -70,46 +77,41 @@ body {
     }
   }
 
-  // Barre de nom après la recherche
   .name-bar {
     background-color: $background-dark;
     color: $accent-color-orange;
-    // padding: 0.75rem 1rem;
-    border-radius: $border-radius;
     font-size: 16px;
-    color: #ffffff;  // La couleur du texte, adapte-la à tes besoins
-    white-space: nowrap;  // Empêche le texte de se couper sur plusieurs lignes
+    white-space: nowrap;
 
     .self-name {
       font-size: 1.25rem;
       font-weight: bold;
-      margin: 0;
       color: $accent-color-orange;
     }
   }
 }
 
-// Style pour l'affichage individuel du matricule recherché (inspiré de "Today’s Sales")
-.person-info {
+// Info des personnes
+.person-info-container {
   display: flex;
-  justify-content: space-around;
-  background-color: $background-dark;
-  padding: 1.5rem;
-//   margin-top: 2rem;
-  gap: 3rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+// Conteneur pour positionner les divs person-id et self-money côte à côte
+.person-id-self-money-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
 
   .person-id {
-    text-align: center;
     flex: 1;
     background-color: $background-light;
     box-shadow: $box-shadow;
-    border-radius: $border-radius;
-
-    p {
-      margin: 0.5rem 0;
-      font-size: 1.2rem;
-      color: $secondary-text-color;
-    }
+    border-radius: $border-radius; // Utilise $border-radius pour un carré
+    color: $secondary-text-color;
 
     .self-grade {
       color: $accent-color-orange;
@@ -118,46 +120,71 @@ body {
     }
 
     .self-mat {
-      color: $primary-text-color;
       font-size: 1.25rem;
+      color: $primary-text-color;
     }
   }
 
-  .person-salary {
-    flex: auto;
-    text-align: center;
-    background-color: $background-light;
-    box-shadow: $box-shadow;
-    border-radius: $border-radius;
+  .self-money {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    background-color: $background-dark;
+    width: auto;
+    height: auto;
+    gap: 3rem;
+    
 
-    p {
-      margin: 0.5rem 0;
-      font-size: 1rem;
-      color: $secondary-text-color;
+    .self-salary, .self-remains-to-pay {
+      background-color: $background-light;
+      box-shadow: $box-shadow;
+      border-radius: $border-radius; // Utilise $border-radius pour un carré
+      font-weight: bold;
+      width: 200px;
+      height: 150px;
     }
 
     .self-salary {
       color: $accent-color-orange;
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-
-    .self-bills,
-    .self-amount-crafted,
-    .self-expense-report,
-    .self-total-ca,
-    .self-remains-to-pay {
-      color: $primary-text-color;
     }
   }
 }
 
-// Style pour l'affichage de tous les matricules (inspiré de "Top Products")
+// Conteneur des informations de salaire
+.person-salary {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+
+  .self-total-ca, .self-bills, .self-amount-crafted, .self-expense-report {
+    flex: 1;
+    background-color: $background-light;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius; // Utilise $border-radius pour un carré
+    font-weight: bold;
+    width: 200px;
+    height: 150px;
+  }
+
+  .self-total-ca, .self-bills {
+    color: $accent-color-blue;
+  }
+
+  .self-amount-crafted {
+    color: $accent-color-purple;
+  }
+
+  .self-expense-report {
+    color: $accent-color-pink;
+  }
+}
+
+// Affichage de tous les matricules
 .all-person-info {
   background-color: $background-light;
   padding: 1.5rem;
   border-radius: $border-radius;
-  margin-bottom: 1.5rem;
+  margin: 0 3rem 3rem;
   box-shadow: $box-shadow;
 
   .all-person-id {
@@ -168,8 +195,8 @@ body {
 
     .all-mat {
       color: $accent-color-blue;
-      font-size: 1.2rem;
       font-weight: bold;
+      font-size: 1.2rem;
     }
 
     .all-name {
@@ -181,36 +208,54 @@ body {
       color: $secondary-text-color;
     }
   }
-
+  
   .all-person-salary {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .all-salary{
+    .all-salary {
       color: $accent-color-orange;
       font-weight: bold;
     }
 
-    .all-bills,
-    .all-amount-crafted,
-    .all-expense-report,
-    .all-total-ca,
+    .all-total-ca {
+      color: $accent-color-blue;
+    }
+
+    .all-bills {
+      color: $primary-text-color;
+    }
+
+    .all-amount-crafted {
+      color: $accent-color-purple;
+    }
+
+    .all-expense-report {
+      color: $accent-color-pink;
+    }
+
     .all-remains-to-pay {
       color: $primary-text-color;
     }
   }
 }
 
-// Style pour le responsive design
+// Responsive adjustments for mobile view
 @media (max-width: 768px) {
+  .person-id-self-money-container, .person-salary {
+    flex-direction: column;
+  }
+
+  .person-salary {
+    gap: 1rem;
+  }
+
   .person-info, .all-person-info {
     flex-direction: column;
-    text-align: left;
 
-    .person-id, .person-salary, .all-person-id, .all-person-salary {
+    .all-person-id, .all-person-salary {
       width: 100%;
-      text-align: left;
     }
   }
 
@@ -225,6 +270,6 @@ body {
 }
 
 #searchButton {
-    visibility: hidden;  // Le bouton est invisible
-    position: absolute;  // Retirer de la mise en page visuelle
-  }
+  visibility: hidden;
+  position: absolute;
+}

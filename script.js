@@ -37,24 +37,50 @@ function searchByMatricule(matricule, data) {
 
 // Fonction pour afficher uniquement le nom dans la barre de nom lors d'une recherche
 function namebar(person) {
-    return `<p class="self-name">${person.nom}</p>`;
+    return `<p class="self-name">${person.nom}  <i class="fa-solid fa-user"></i> </p>`;
 }
 
 // Fonction pour afficher les informations d'une seule personne
+// Fonction pour afficher les informations d'une seule personne avec les cartes et positionnement souhaités
 function displayPersonInfo(person) {
     return `
         <div class="person-info">
-            <div class="person-id">
-                <p class="self-grade">Grade: ${person.grade}</p>
-                <p class="self-mat">Matricule: ${person.matricule}</p>
-            </div>
-            <div class="person-salary">
-                <p class="self-salary">Salaire: ${person.salaire}</p>
-                <p class="self-total-ca">CA: ${person.caTotal}</p>
-                <p class="self-bills">Factures: ${person.nombreFacture}</p>
-                <p class="self-amount-crafted">Craft: ${person.craft}</p>
-                <p class="self-expense-report">Notes de frais: ${person.noteDeFrais}</p>
-                <p class="self-remains-to-pay">Reste à payer: ${person.resteAPayer}</p>
+            <div class="person-info-container">
+                <!-- Div contenant l'identifiant et la section des salaires -->
+                <div class="person-id-self-money-container" style="display: flex; justify-content: space-between;">
+                    <div class="person-id card">
+                        <div>
+                            <p class="self-mat">Matricule: ${person.matricule}</p>
+                        </div>
+                        <div>
+                            <p class="self-grade">Grade: ${person.grade}</p>
+                        </div>
+                    </div>
+                    <div class="self-money card">
+                        <div class="self-salary">
+                            <p><i class="fa-regular fa-money-bill-1"></i> ${person.salaire}</p>
+                        </div>
+                        <div class="self-remains-to-pay">
+                            <p><i class="fa-solid fa-comment-dollar"></i> Reste à payer: ${person.resteAPayer}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Div contenant CA, Factures, Craft et Notes de frais sous les identifiants et les salaires -->
+                <div class="person-salary" style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                    <div class="self-total-ca card">
+                        <p> <i class="fa-solid fa-cash-register"></i> CA: ${person.caTotal}</p>
+                    </div>
+                    <div class="self-bills card">
+                        <p><i class="fa-solid fa-receipt"></i> Factures: ${person.nombreFacture}</p>
+                    </div>
+                    <div class="self-amount-crafted card">
+                        <p><i class="fa-solid fa-screwdriver-wrench"></i> Craft: ${person.craft}</p>
+                    </div>
+                    <div class="self-expense-report card">
+                        <p><i class="fa-solid fa-file-invoice-dollar"></i> Notes de frais: ${person.noteDeFrais}</p>
+                    </div>
+                </div>
             </div>
         </div>
     `;
@@ -65,17 +91,35 @@ function displayAllPersonInfo(person) {
     return `
         <div class="all-person-info">
             <div class="all-person-id">
-                <p class="all-grade">Grade: ${person.grade}</p>
-                <p class="all-name">${person.nom}</p>
-                <p class="all-mat">Matricule: ${person.matricule}</p>
+                <div class="all-grade">
+                    <p>Grade: ${person.grade}</p>
+                </div>
+                <div class="all-name">
+                    <p>${person.nom}</p>
+                </div>
+                <div class="all-mat">
+                    <p>Matricule: ${person.matricule}</p>
+                </div>
             </div>
             <div class="all-person-salary">
-                <p class="all-salary">Salaire: ${person.salaire}</p>
-                <p class="all-total-ca">CA: ${person.caTotal}</p>
-                <p class="all-bills">Factures: ${person.nombreFacture}</p>
-                <p class="all-amount-crafted">Craft: ${person.craft}</p>
-                <p class="all-expense-report">Notes de frais: ${person.noteDeFrais}</p>
-                <p class="all-remains-to-pay">Reste à payer: ${person.resteAPayer}</p>
+                <div class="all-salary">
+                    <p>Salaire: ${person.salaire}</p>
+                </div>
+                <div class="all-total-ca">
+                    <p>CA: ${person.caTotal}</p>
+                </div>
+                <div class="all-bills">
+                    <p>Factures: ${person.nombreFacture}</p>
+                </div>
+                <div class="all-amount-crafted">
+                    <p><i class="fa-solid fa-screwdriver-wrench"></i> Craft: ${person.craft}</p>
+                </div>
+                <div class="all-expense-report">
+                    <p><i class="fa-solid fa-file-invoice-dollar"></i> Notes de frais: ${person.noteDeFrais}</p>
+                </div>
+                <div class="all-remains-to-pay">
+                    <p><i class="fa-solid fa-comment-dollar"></i> Reste à payer: ${person.resteAPayer}</p>
+                </div>
             </div>
         </div>
     `;

@@ -104,7 +104,7 @@ body {
 .person-id-self-money-container {
   display: flex;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 3rem;
 
   .person-id {
     flex: 1;
@@ -136,6 +136,10 @@ body {
     
 
     .self-salary, .self-remains-to-pay {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 3;
       background-color: $background-light;
       box-shadow: $box-shadow;
       border-radius: $border-radius; // Utilise $border-radius pour un carré

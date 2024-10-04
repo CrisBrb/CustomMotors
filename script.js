@@ -13,7 +13,7 @@ function parseCsv(csvText) {
 
 function extractRelevantData(parsedData) {
     const relevantData = [];
-    for (let i = 3; i <= 34; i++) {
+    for (let i = 3; i <= 35; i++) {
         const row = parsedData[i];
         relevantData.push({
             grade: row[1],

@@ -142,7 +142,7 @@ function displayAllPersonInfo(person) {
                     <p><i class="fa-solid fa-file-invoice-dollar"></i> Notes de frais: ${person.noteDeFrais}</p>
                 </div>
                 <div class="all-remains-to-pay">
-                    <p><i class="fa-solid fa-comment-dollar"></i> <br><br>Reste à payer: ${person.resteAPayer}</p>
+                    <p><i class="fa-solid fa-comment-dollar"></i> Reste à payer: ${person.resteAPayer}</p>
                 </div>
             </div>
         </div>

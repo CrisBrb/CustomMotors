@@ -47,7 +47,7 @@ function displayPersonInfo(person) {
         <div class="person-info">
             <div class="person-info-container">
                 <!-- Div contenant l'identifiant et la section des salaires -->
-                <div class="person-id-self-money-container" style="display: flex; justify-content: space-between;">
+                <div class="person-id-self-money-container">
                     <div class="person-id card">
                         <div>
                             <p class="self-mat">Matricule: ${person.matricule}</p>
@@ -58,27 +58,51 @@ function displayPersonInfo(person) {
                     </div>
                     <div class="self-money card">
                         <div class="self-salary">
-                            <p><i class="fa-regular fa-money-bill-1"></i> ${person.salaire}</p>
+                            <div class="=self-money-icon-container"><i class="fa-regular fa-money-bill-1"></i></div>
+                            <div class="self-money-info-container">
+                                <p class="amount-p">${person.salaire}</p>
+                                <p>Salaire</p>
+                            </div>
                         </div>
                         <div class="self-remains-to-pay">
-                            <p><i class="fa-solid fa-comment-dollar"></i> Reste à payer: ${person.resteAPayer}</p>
+                            <div class="self-remains-icon-container"><i class="fa-solid fa-comment-dollar"></i></div>
+                            <div class="self-remains-info-container">
+                                <p class="amount-p">${person.resteAPayer}</p>
+                                <p>Reste à payer</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Div contenant CA, Factures, Craft et Notes de frais sous les identifiants et les salaires -->
-                <div class="person-salary" style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                <div class="person-salary">
                     <div class="self-total-ca card">
-                        <p> <i class="fa-solid fa-cash-register"></i> CA: ${person.caTotal}</p>
+                        <div class="self-ca-icon-container"><i class="fa-solid fa-cash-register"></i></div>
+                        <div class="self-ca-info-container">
+                            <p class="amount-p">${person.caTotal}</p>
+                            <p>Chiffre d'affaire</p>
+                        </div>
                     </div>
                     <div class="self-bills card">
-                        <p><i class="fa-solid fa-receipt"></i> Factures: ${person.nombreFacture}</p>
+                        <div class="self-bills-icon-container"><i class="fa-solid fa-receipt"></i></div>
+                        <div class="self-bills-info-container">
+                            <p class="amount-p">${person.nombreFacture}</p>
+                            <p>Factures</p>
+                        </div>
                     </div>
                     <div class="self-amount-crafted card">
-                        <p><i class="fa-solid fa-screwdriver-wrench"></i> Craft: ${person.craft}</p>
+                        <div class="self-craft-icon-container"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <div class="self-craft-info-container">
+                            <p class="amount-p">${person.craft}</p>
+                            <p>Craft</p>
+                        </div>
                     </div>
                     <div class="self-expense-report card">
-                        <p><i class="fa-solid fa-file-invoice-dollar"></i> Notes de frais: ${person.noteDeFrais}</p>
+                        <div class="self-expense-icon-container"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                        <div class="self-expense-info-container">
+                            <p class="amount-p">${person.noteDeFrais}</p>
+                            <p>Notes de frais</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -106,10 +130,10 @@ function displayAllPersonInfo(person) {
                     <p>Salaire: ${person.salaire}</p>
                 </div>
                 <div class="all-total-ca">
-                    <p>CA: ${person.caTotal}</p>
+                    <p><i class="fa-solid fa-cash-register"></i> CA: ${person.caTotal}</p>
                 </div>
                 <div class="all-bills">
-                    <p>Factures: ${person.nombreFacture}</p>
+                    <p><i class="fa-solid fa-receipt"></i> Factures: ${person.nombreFacture}</p>
                 </div>
                 <div class="all-amount-crafted">
                     <p><i class="fa-solid fa-screwdriver-wrench"></i> Craft: ${person.craft}</p>
@@ -118,7 +142,7 @@ function displayAllPersonInfo(person) {
                     <p><i class="fa-solid fa-file-invoice-dollar"></i> Notes de frais: ${person.noteDeFrais}</p>
                 </div>
                 <div class="all-remains-to-pay">
-                    <p><i class="fa-solid fa-comment-dollar"></i> Reste à payer: ${person.resteAPayer}</p>
+                    <p><i class="fa-solid fa-comment-dollar"></i> <br><br>Reste à payer: ${person.resteAPayer}</p>
                 </div>
             </div>
         </div>

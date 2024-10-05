@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 // Variables pour les couleurs basées sur le visuel de l'image
 $background-dark: #1f1f2e; 
 $background-light: #27293d;
 $primary-text-color: #fff; 
 $secondary-text-color: #6d6d80;
 $accent-color-orange: #f97300;
+$accent-color-green: #1b882a;
 $accent-color-blue: #4be6fe;
 $accent-color-purple: #d16aff;
 $accent-color-pink: #ff6ba5;
@@ -28,7 +31,7 @@ $box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 // Style général
 body {
   background-color: $background-dark;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Inter", sans-serif;
   color: $primary-text-color;
 }
 
@@ -68,7 +71,7 @@ body {
       border-radius: $border-radius;
       color: $primary-text-color;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: lighter;
       transition: background-color 0.3s ease;
 
       &:hover {
@@ -85,7 +88,7 @@ body {
 
     .self-name {
       font-size: 1.25rem;
-      font-weight: bold;
+      font-weight: lighter;
       color: $accent-color-orange;
     }
   }
@@ -95,7 +98,7 @@ body {
 .person-info-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 3rem;
   margin-left: 3rem;
   margin-right: 3rem;
 }
@@ -116,7 +119,7 @@ body {
     .self-grade {
       color: $accent-color-orange;
       font-size: 1.5rem;
-      font-weight: bold;
+      font-weight: lighter;
     }
 
     .self-mat {
@@ -131,25 +134,43 @@ body {
     flex-direction: row;
     background-color: $background-dark;
     width: auto;
-    height: auto;
+    height: 150px;
     gap: 3rem;
     
 
     .self-salary, .self-remains-to-pay {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
       flex-grow: 3;
       background-color: $background-light;
       box-shadow: $box-shadow;
       border-radius: $border-radius; // Utilise $border-radius pour un carré
-      font-weight: bold;
+      font-weight: lighter;
       width: 200px;
-      height: 150px;
+      height: 100%;
+
+      p {
+        margin: 0;
+        padding: 1rem 1rem 1rem 1rem;
+      }
+
+      i {
+        color: $accent-color-green;
+        font-size: 24px;
+        padding: 1rem 1rem 0 1rem;
+      }
+
+      .amount-p {
+        color: whitesmoke;
+        font-size: 32px;
+        font-weight: 400;
+        padding: 1rem 1rem 0 1rem;
+      }
     }
 
     .self-salary {
-      color: $accent-color-orange;
+      color: whitesmoke;
     }
   }
 }
@@ -157,17 +178,38 @@ body {
 // Conteneur des informations de salaire
 .person-salary {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   gap: 3rem;
 
+
   .self-total-ca, .self-bills, .self-amount-crafted, .self-expense-report {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+    justify-content: space-between;
+    align-items: flex-start;
     background-color: $background-light;
     box-shadow: $box-shadow;
     border-radius: $border-radius; // Utilise $border-radius pour un carré
-    font-weight: bold;
+    font-weight: lighter;
     width: 200px;
-    height: 150px;
+    height: 100%;
+
+    p {
+      margin: 0;
+      padding: 1rem 1rem 1rem 1rem;
+    }
+
+    i {
+      font-size: 24px;
+      padding: 1rem 1rem 0 1rem;
+    }
+    .amount-p {
+      color: whitesmoke;
+      font-size: 32px;
+      font-weight: 400;
+      padding: 1rem 1rem 0 1rem;
+    }
   }
 
   .self-total-ca, .self-bills {
@@ -196,19 +238,22 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
+    font-weight: lighter;
 
     .all-mat {
+      display: flex;
+      justify-content: flex-end;
+      width: 15%;
       color: $accent-color-blue;
-      font-weight: bold;
-      font-size: 1.2rem;
     }
 
     .all-name {
       color: $accent-color-orange;
-      font-size: 1.25rem;
+      font-weight: 400;
     }
 
     .all-grade {
+      width: 15%;
       color: $secondary-text-color;
     }
   }
@@ -217,10 +262,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-weight: lighter;
 
     .all-salary {
       color: $accent-color-orange;
-      font-weight: bold;
+      font-weight: 400;
     }
 
     .all-total-ca {
@@ -241,6 +287,7 @@ body {
 
     .all-remains-to-pay {
       color: $primary-text-color;
+      font-weight: 400;
     }
   }
 }

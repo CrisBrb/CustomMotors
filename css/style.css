@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 .card {
   color: #fff;
   width: 150px;
@@ -10,7 +11,7 @@
 
 body {
   background-color: #1f1f2e;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
   color: #fff;
 }
 
@@ -48,7 +49,7 @@ body {
   border-radius: 8px;
   color: #fff;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: lighter;
   transition: background-color 0.3s ease;
 }
 .header .search-bar .CsearchButton:hover {
@@ -62,14 +63,14 @@ body {
 }
 .header .name-bar .self-name {
   font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: lighter;
   color: #f97300;
 }
 
 .person-info-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 3rem;
   margin-left: 3rem;
   margin-right: 3rem;
 }
@@ -89,7 +90,7 @@ body {
 .person-id-self-money-container .person-id .self-grade {
   color: #f97300;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: lighter;
 }
 .person-id-self-money-container .person-id .self-mat {
   font-size: 1.25rem;
@@ -101,38 +102,70 @@ body {
   flex-direction: row;
   background-color: #1f1f2e;
   width: auto;
-  height: auto;
+  height: 150px;
   gap: 3rem;
 }
 .person-id-self-money-container .self-money .self-salary, .person-id-self-money-container .self-money .self-remains-to-pay {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
   flex-grow: 3;
   background-color: #27293d;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  font-weight: bold;
+  font-weight: lighter;
   width: 200px;
-  height: 150px;
+  height: 100%;
+}
+.person-id-self-money-container .self-money .self-salary p, .person-id-self-money-container .self-money .self-remains-to-pay p {
+  margin: 0;
+  padding: 1rem 1rem 1rem 1rem;
+}
+.person-id-self-money-container .self-money .self-salary i, .person-id-self-money-container .self-money .self-remains-to-pay i {
+  color: #1b882a;
+  font-size: 24px;
+  padding: 1rem 1rem 0 1rem;
+}
+.person-id-self-money-container .self-money .self-salary .amount-p, .person-id-self-money-container .self-money .self-remains-to-pay .amount-p {
+  color: whitesmoke;
+  font-size: 32px;
+  font-weight: 400;
+  padding: 1rem 1rem 0 1rem;
 }
 .person-id-self-money-container .self-money .self-salary {
-  color: #f97300;
+  color: whitesmoke;
 }
 
 .person-salary {
   display: flex;
-  justify-content: space-between;
   gap: 3rem;
 }
 .person-salary .self-total-ca, .person-salary .self-bills, .person-salary .self-amount-crafted, .person-salary .self-expense-report {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 3;
+  justify-content: space-between;
+  align-items: flex-start;
   background-color: #27293d;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  font-weight: bold;
+  font-weight: lighter;
   width: 200px;
-  height: 150px;
+  height: 100%;
+}
+.person-salary .self-total-ca p, .person-salary .self-bills p, .person-salary .self-amount-crafted p, .person-salary .self-expense-report p {
+  margin: 0;
+  padding: 1rem 1rem 1rem 1rem;
+}
+.person-salary .self-total-ca i, .person-salary .self-bills i, .person-salary .self-amount-crafted i, .person-salary .self-expense-report i {
+  font-size: 24px;
+  padding: 1rem 1rem 0 1rem;
+}
+.person-salary .self-total-ca .amount-p, .person-salary .self-bills .amount-p, .person-salary .self-amount-crafted .amount-p, .person-salary .self-expense-report .amount-p {
+  color: whitesmoke;
+  font-size: 32px;
+  font-weight: 400;
+  padding: 1rem 1rem 0 1rem;
 }
 .person-salary .self-total-ca, .person-salary .self-bills {
   color: #4be6fe;
@@ -156,27 +189,31 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+  font-weight: lighter;
 }
 .all-person-info .all-person-id .all-mat {
+  display: flex;
+  justify-content: flex-end;
+  width: 15%;
   color: #4be6fe;
-  font-weight: bold;
-  font-size: 1.2rem;
 }
 .all-person-info .all-person-id .all-name {
   color: #f97300;
-  font-size: 1.25rem;
+  font-weight: 400;
 }
 .all-person-info .all-person-id .all-grade {
+  width: 15%;
   color: #6d6d80;
 }
 .all-person-info .all-person-salary {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: lighter;
 }
 .all-person-info .all-person-salary .all-salary {
   color: #f97300;
-  font-weight: bold;
+  font-weight: 400;
 }
 .all-person-info .all-person-salary .all-total-ca {
   color: #4be6fe;
@@ -192,6 +229,7 @@ body {
 }
 .all-person-info .all-person-salary .all-remains-to-pay {
   color: #fff;
+  font-weight: 400;
 }
 
 @media (max-width: 768px) {

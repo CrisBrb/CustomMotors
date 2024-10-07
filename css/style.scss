@@ -249,12 +249,15 @@ body {
 
     .all-name {
       color: $accent-color-orange;
-      font-weight: 400;
+      font-weight: 500;
+      font-size: 22px;
     }
 
     .all-grade {
       width: 15%;
       color: $secondary-text-color;
+      font-weight: 300;
+      font-size: 16px;
     }
   }
   
@@ -262,11 +265,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: lighter;
+    font-weight: 300;
 
     .all-salary {
       color: $accent-color-orange;
-      font-weight: 400;
+      font-weight: 700;
     }
 
     .all-total-ca {
@@ -287,7 +290,7 @@ body {
 
     .all-remains-to-pay {
       color: $primary-text-color;
-      font-weight: 400;
+      font-weight: 700;
     }
   }
 }

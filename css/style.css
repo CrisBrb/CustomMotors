@@ -199,21 +199,24 @@ body {
 }
 .all-person-info .all-person-id .all-name {
   color: #f97300;
-  font-weight: 400;
+  font-weight: 500;
+  font-size: 22px;
 }
 .all-person-info .all-person-id .all-grade {
   width: 15%;
   color: #6d6d80;
+  font-weight: 300;
+  font-size: 16px;
 }
 .all-person-info .all-person-salary {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: lighter;
+  font-weight: 300;
 }
 .all-person-info .all-person-salary .all-salary {
   color: #f97300;
-  font-weight: 400;
+  font-weight: 700;
 }
 .all-person-info .all-person-salary .all-total-ca {
   color: #4be6fe;
@@ -229,7 +232,7 @@ body {
 }
 .all-person-info .all-person-salary .all-remains-to-pay {
   color: #fff;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire Partenaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        select, button {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Formulaire Partenaire</h1>
+
+    <!-- Menu déroulant Partenaire -->
+    <label for="partenaire">Partenaire</label>
+    <select id="partenaire">
+        <option value="" disabled selected>-- Sélectionnez un partenaire --</option> <!-- Option vide par défaut -->
+        <!-- Options de partenaires insérées via JavaScript -->
+    </select>
+
+    <!-- Menu déroulant RAISON -->
+    <label for="raison">Raison</label>
+    <select id="raison">
+        <option value="total">Total</option>
+        <option value="moteur">Moteur</option>
+        <option value="pneu">Pneu</option>
+        <option value="nettoyage">Nettoyage</option>
+        <option value="dépannage">Dépannage</option>
+    </select>
+
+    <!-- Menu déroulant PERSO -->
+    <label for="typeVehicule">Type de véhicule</label>
+    <select id="typeVehicule">
+        <option value="" disabled selected>-- Type de véhicule --</option> <!-- Option vide par défaut -->
+        <option value="entreprise">Véhicule d'entreprise</option>
+        <option value="personnel">Véhicule personnel</option>
+    </select>
+
+    <!-- Menu déroulant LIEU -->
+    <label for="lieu">Lieu</label>
+    <select id="lieu">
+        <option value="garage">Garage</option>
+        <option value="extérieur">Extérieur</option>
+    </select>
+
+    <!-- Bouton Copier -->
+    <button onclick="copierRaisonLieu()">Copier Raison + Lieu</button>
+
+    <!-- Zone de résultat -->
+    <p id="resultat"></p>
+
+    <script>
+        // Liste des partenaires et leurs codes (garage et extérieur pour exceptions)
+        const partenaires = {
+            "HDM": { codeGarage: "", codeExterieur: "" }, // Pas de code donc non affiché
+            "PDM": { codeGarage: "PDM", codeExterieur: "PDM" },
+            "GB Foundry": { codeGarage: "GBF", codeExterieur: "GBF" },
+            "Boucherie": { codeGarage: "BOU", codeExterieur: "BOU" }, 
+            "Ferme Grapseed": { codeGarage: "GRP", codeExterieur: "GRP" },
+            "Milars-Fish": { codeGarage: "MIL", codeExterieur: "MIL" }, 
+            "SAMC": { codeGarage: "SAMC", codeExterieur: "SAMC" },
+            "SASP": { codeGarage: "SASP", codeExterieur: "SASP" },
+            "Burger Shot": { codeGarage: "BGS", codeExterieur: "BGS" }, 
+            "Ferme Biogood": { codeGarage: "BIO", codeExterieur: "BIO" }, 
+            "Ls Motor Cycle": { codeGarage: "LMC", codeExterieur: "LMC" }, 
+            "Noodles": { codeGarage: "", codeExterieur: "" }, // Pas de code donc non affiché
+            "IRS": { codeGarage: "IRS", codeExterieur: "IRS" }
+        };
+
+        // Exceptions pour les partenaires avec des codes extérieurs différents
+        const exceptions = {
+            "Ferme Grapseed": "GRPEXT",  // Exception pour Ferme Grapseed
+            "Milars-Fish": "MILEXT"      // Exception pour Milars-Fish
+        };
+
+        // Fonction pour remplir le menu déroulant des partenaires
+        function remplirPartenaires() {
+            const selectPartenaire = document.getElementById("partenaire");
+            for (const [partenaire, codes] of Object.entries(partenaires)) {
+                if (codes.codeGarage || codes.codeExterieur) { // Affiche uniquement les partenaires ayant un code
+                    const option = document.createElement("option");
+                    option.value = partenaire;
+                    option.textContent = partenaire;
+                    selectPartenaire.appendChild(option);
+                }
+            }
+        }
+
+        // Appel à la fonction pour remplir le menu déroulant
+        remplirPartenaires();
+
+        // Fonction pour copier Raison + Lieu
+        function copierRaisonLieu() {
+            const partenaire = document.getElementById("partenaire").value;
+            const raison = document.getElementById("raison").value;
+            const lieu = document.getElementById("lieu").value;
+            const typeVehicule = document.getElementById("typeVehicule").value;
+
+            // Vérifier si un partenaire et un type de véhicule ont été sélectionnés
+            if (!partenaire || !typeVehicule) {
+                alert("Veuillez sélectionner un partenaire et un type de véhicule.");
+                return;
+            }
+
+            let codePartenaire = "";
+
+            // Récupérer le code partenaire
+            if (lieu === "extérieur") {
+                codePartenaire = exceptions[partenaire] || partenaires[partenaire].codeExterieur || partenaires[partenaire].codeGarage;
+            } else {
+                codePartenaire = partenaires[partenaire].codeGarage;
+            }
+
+            // Ajoute "ext" si lieu est "extérieur" et que ce n'est pas Ferme Grapseed ou Milars-Fish
+            let lieuAjoute = (lieu === "extérieur" && !exceptions[partenaire]) ? "ext" : "";
+
+            // Si le code partenaire n'est pas défini, afficher un espace vide
+            codePartenaire = codePartenaire || "";
+
+            // Ajout de "perso" si type de véhicule est "Véhicule personnel"
+            let typeAjoute = (typeVehicule === "personnel") ? "perso" : "";
+
+            // Afficher le code partenaire en premier
+            let texte = `${codePartenaire} ${raison} ${typeAjoute} ${lieuAjoute}`.trim();
+
+            copierTexte(texte);
+        }
+
+        // Fonction utilitaire pour copier le texte
+        function copierTexte(texte) {
+            const zoneResultat = document.getElementById("resultat");
+            zoneResultat.textContent = texte;
+            
+            const textarea = document.createElement("textarea");
+            textarea.value = texte;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+            alert("Texte copié: " + texte);
+        }
+    </script>
+
+</body>
+</html>
